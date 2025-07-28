@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <RootNamespace>RimDestiny</RootNamespace>
+    <AssemblyName>RimDestiny</AssemblyName>
+    <LangVersion>latest</LangVersion>
+
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+    <!-- Custom RimWorld version variable -->
+    <RimVersion Condition="'$(RimVersion)' == ''">1.6</RimVersion>
+
+    <!-- Output paths -->
+    <OutputPath>bin\$(RimVersion)\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>..\$(RimVersion)\Assemblies</OutputPath>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4523" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.6" />
+    <PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="12.0.0" />
+    <PackageReference Include="UnlimitedHugs.Rimworld.HugsLibChecker" Version="5.0.0" />
+  </ItemGroup>
+
+  <!-- Optional: prevent copying NuGet DLLs into the mod folder -->
+  <ItemGroup>
+    <PackageReference Update="Krafs.Rimworld.Ref">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Update="Lib.Harmony">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Update="UnlimitedHugs.Rimworld.HugsLib">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Update="UnlimitedHugs.Rimworld.HugsLibChecker">
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
